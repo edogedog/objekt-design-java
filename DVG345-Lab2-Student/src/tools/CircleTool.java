@@ -60,3 +60,4 @@ public final class CircleTool implements Tool
       }
     }
   }
+//hej
