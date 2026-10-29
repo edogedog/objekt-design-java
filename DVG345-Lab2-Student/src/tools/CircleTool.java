@@ -35,11 +35,17 @@ public final class CircleTool implements Tool
     if (center == null) {
     	return;
     }
+    
     double r = center.distance(point);
+    
     if (r<=0) {
+    	cancel();
     	return;
     }
-    new Circle(point, radie);
+    
+    Circle circle = new Circle(center, r);
+    document.add(circle);
+    cancel();
     }
 
   @Override

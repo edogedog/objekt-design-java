@@ -15,8 +15,7 @@ public final class Rectangle implements Figure {
 	private Point2 topLeft;
 	private final double width;
 	private final double height;
-	private final double x;
-	private final double y;
+
 
 	/** Skapar rektangeln. Även de beräknade hörnen måste vara ändliga. */
 	public Rectangle(Point2 topLeft, double width, double height) {
@@ -51,8 +50,7 @@ public final class Rectangle implements Figure {
 		}
 		this.height = height;
 
-		x = topLeft.x() + width / 2;
-		y = topLeft.y() + height / 2;
+
 	}
 
 	@Override
@@ -71,7 +69,8 @@ public final class Rectangle implements Figure {
 
 	@Override
 	public Point2 getCenter() {
-		return new Point2(x, y);
+	    return new Point2(topLeft.x() + width / 2,
+	                      topLeft.y() + height / 2);
 	}
 
 	@Override
