@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>JUnit-anvisningar – testa din labbkod</title>
+  <style>
+body { max-width: 1050px; margin: 2.5rem auto; padding: 0 1.5rem; color: #193440;
+  background: #fffdf9; font: 18px/1.65 system-ui, sans-serif; }
+h1,h2,h3 { line-height: 1.25; } h2 { margin-top: 2.5rem; border-top: 2px solid #adc8ce; padding-top: 1rem; }
+a { color: #006775; } table { border-collapse: collapse; width: 100%; font-size: 16px; }
+th,td { border: 1px solid #bdcdd2; padding: .65rem; text-align: left; vertical-align: top; }
+th { background: #e6eff0; } pre { padding: 1rem; background: #edf2f4; overflow: auto; font-size: 15px; }
+code { font-family: ui-monospace, monospace; } .note { background: #e6f1ed; padding: 1rem 1.4rem; }
+figure { margin: 1.5rem 0; } img { max-width: 100%; height: auto; } figcaption { font-size: .9em; }
+@media print { body { font-size: 11pt; margin: 0; } h2,h3 { break-after: avoid; } tr { break-inside: avoid; } nav { display: none; } }
+
+</style>
+</head>
+<body>
+  <p>DVG345 · Objektorienterad design</p>
+  <h1>JUnit-anvisningar – testa din labbkod</h1>
+  <p>JUnit hjälper dig att kontrollera ett beteende i taget och hitta fel medan du arbetar.
+    Använd Eclipse i labsalens Windowsmiljö. Samma arbetsgång fungerar i Eclipse på Mac.
+    Du behöver inte använda terminalen för att köra testerna.</p>
+  <h2 id="eclipse">Kom igång i Eclipse på Windows</h2>
+  <ol>
+    <li>Ladda ner kodpaketet från laborationssidan. Högerklicka på zip-filen i Utforskaren
+      och välj <strong>Extrahera alla</strong>. Arbeta i den uppackade mappen.</li>
+    <li>Öppna Eclipse och välj <strong>File → Import → General → Existing Projects into Workspace</strong>.
+      Välj den uppackade mappen under <strong>Select root directory</strong>, markera projektet
+      och välj <strong>Finish</strong>.</li>
+    <li>Projektet använder Java 17 och JUnit 5. Om Eclipse visar byggfel, följ felsökningen nedan
+      innan du försöker köra testerna.</li>
+    <li>Högerklicka på <code>tests-junit</code> i Package Explorer och välj
+      <strong>Run As → JUnit Test</strong>. Du kan också köra en enskild testklass på samma sätt.</li>
+    <li>Öppna testnamnen i JUnit-vyn. Markera ett test som misslyckats och läs
+      <strong>Failure Trace</strong>. Dubbelklicka på en rad för att gå till koden.</li>
+    <li>Ändra din implementation, spara och kör testerna igen.</li>
+  </ol>
+  <h2 id="resultat">Förstå testresultatet</h2>
+  <p>Grönt betyder att de körda testerna klarades. Rött betyder att ett test hittade ett fel
+    eller att ett undantag avbröt körningen. Läs testets namn och jämför förväntat värde
+    (<code>expected</code>) med faktiskt värde (<code>actual</code>) när de visas.</p>
+  <p>Startpaketet innehåller avsiktligt ofärdiga uppgifter. Därför kan tester vara röda innan
+    du har implementerat funktionerna. Ett kompileringsfel behöver däremot rättas innan
+    testerna kan köras. Gröna tester är ett stöd; du behöver också prova ritprogrammet
+    och kunna förklara din lösning.</p>
+  <h2 id="egna-tester">Skriv egna tester</h2>
+  <p>Lägg egna tester i en ny klass, exempelvis <code>EgnaFigurTest.java</code>,
+    under <code>tests-junit/grading</code>. Behåll de givna testerna så att du kan
+    fortsätta använda dem som återkoppling. Utgå från en given testklass för importerna
+    och använd <code>@Test</code> från <code>org.junit.jupiter.api</code>.</p>
+  <p>Varje test skapar sina egna objekt och ska kunna köras för sig.
+    Förklara vilket fel din assertion skulle upptäcka. I labb 1 skriver du ett eget test enligt
+    labbeskrivningen. I labb 2–3 kompletterar du med minst ett meningsfullt test per labb.
+    I labb 4 skriver du ett sekvenstest, till exempel execute–undo–redo, och förklarar
+    tillståndet före och efter operationerna.</p>
+  <h2 id="felsokning">Om Eclipse inte kan köra testerna</h2>
+  <ul>
+    <li><strong>Java saknas eller har fel version:</strong> kontrollera projektets
+      <strong>Properties → Java Build Path → Libraries</strong> och dess
+      <strong>JRE System Library</strong>. Använd en JDK för Java 17 eller senare med
+      projektets Java 17-inställning. Be handledaren om hjälp om rätt JDK saknas i labsalen.</li>
+    <li><strong>Importerna för JUnit är röda:</strong> välj <strong>Properties → Java Build Path
+      → Libraries → Add Library → JUnit → JUnit 5</strong>. Projektets tester använder JUnit 5.</li>
+    <li><strong>Inga tester hittas:</strong> kontrollera att <code>tests-junit</code> är en källkodsmapp
+      i projektets Build Path och att körkonfigurationen använder JUnit 5.</li>
+    <li><strong>Du har lagt till filer utanför Eclipse:</strong> högerklicka projektet och välj
+      <strong>Refresh</strong>, därefter vid behov <strong>Project → Clean</strong>.
+      Behåll dina egna projektinställningar när du integrerar ett tilläggspaket.</li>
+    <li><strong>Åäö ser fel ut i Java-filer:</strong> välj <strong>Properties → Resource
+      → Text file encoding → Other: UTF-8</strong> för projektet.</li>
+  </ul>
+  <h2 id="mac">Om du använder Mac</h2>
+  <p>Packa upp zip-filen i Finder och följ sedan samma Eclipse-steg som ovan.
+    Om du har Java installerat men Eclipse inte hittar det, kontrollera
+    <strong>Eclipse → Settings → Java → Installed JREs</strong>.
+    Välj en JDK som passar projektets Java 17-inställning.</p>
+  <h2 id="testklasser">Vilka tester ska du köra?</h2>
+  <p><code>StarterTest</code> kontrollerar den givna linjen och ritytan och kan köras
+    innan du löst uppgifterna. <code>CircleTest</code>, <code>RectangleTest</code> och
+    <code>SquareTest</code> kontrollerar figurernas kontrakt. I labb 1 kontrollerar
+    <code>DemoContentTest</code> också din egen exempelritning. Från labb 2 tillkommer
+    tester för rörelse, verktyg, grupper och historik enligt respektive labb.</p>
+  <p>Kör hela <code>tests-junit</code> för samlad återkoppling. Kör också
+    <code>app.DrawingApp</code> och prova det synliga resultatet och de gester som labben beskriver.</p>
+  <h2 id="inlamning">Tester och inlämning i CodeGrade</h2>
+  <p>CodeGrade kör samma givna tester i en separat miljö. Följ inlämningsanvisningen
+    i din labb: lämna hela <code>src/</code> med paketmapparna direkt under.
+    I en zip-fil ska <code>src/</code> ligga direkt i zip-filens rot, utan extra projektmapp.
+    Lämna inte <code>tests/</code>, <code>tests-junit/</code>, <code>bin/</code> eller byggskript
+    som bedömningsunderlag. Egna tester tar du med till seminariet.</p>
+  <p>Ändringar i dina lokala testfiler ändrar inte CodeGrades tester.
+    Använd återkopplingen för att förbättra koden och förbered dig på att förklara
+    både implementationen och dina egna tester vid seminariet.</p>
+</body>
+</html>

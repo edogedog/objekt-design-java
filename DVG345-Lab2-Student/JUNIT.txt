@@ -1,0 +1,14 @@
+JUnit 5 – testa din labbkod
+
+Öppna JUNIT.html i webbläsaren för fullständiga, formaterade anvisningar
+för Windows och Mac. Filen är kodad i UTF-8.
+
+Snabbstart i Eclipse (Windows och Mac):
+1. Packa upp kodpaketet.
+2. File > Import > General > Existing Projects into Workspace.
+3. Högerklicka tests-junit > Run As > JUnit Test.
+4. Markera ett rött test och läs Failure Trace. Rätta koden och kör igen.
+
+Projektet använder Java 17 och JUnit 5. Startpaketets uppgifter är
+avsiktligt ofärdiga, så tester kan vara röda innan du löst uppgifterna.
+Läs laborationsbeskrivningen för egna tester och inlämning.
